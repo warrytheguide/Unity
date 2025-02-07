@@ -1,0 +1,44 @@
+using UnityEngine;
+public class Dragon : MonoBehaviour
+{
+
+    [SerializeField] public float amplitude;
+    [SerializeField] public float frequency;
+    [SerializeField] public float horizontalSpeed;
+    private float height;
+    private Vector3 startPosition;
+
+    void Start()
+    {
+        int randomInt = Random.Range(0, 3);
+        switch (randomInt)
+        {
+            case (0):
+                height = -5;
+                break;
+            case (1):
+                height = (float)-2.8;
+                break;
+            case (2):
+                height = (float)-0.3;
+                break;
+        }
+
+        startPosition = new Vector3(transform.position.x, height, transform.position.z);
+    }
+
+    void Update()
+    {
+        // Calculate the horizontal movement
+        float horizontalMovement = horizontalSpeed * Time.deltaTime;
+
+        // Calculate the vertical oscillation
+        float yOffset = amplitude * Mathf.Sin(Time.time * frequency * 2f * Mathf.PI);
+
+        // Combine horizontal movement and vertical oscillation
+        transform.position = startPosition + new Vector3(-horizontalMovement, yOffset, 0f);
+
+        // Update the start position for continuous leftward movement
+        startPosition += new Vector3(-horizontalMovement, 0f, 0f);
+    }
+}
