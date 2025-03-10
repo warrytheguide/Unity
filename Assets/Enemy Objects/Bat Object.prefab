@@ -209,4 +209,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amplitude: 2.5
   frequency: 0.4
-  horizontalSpeed: 4
+  horizontalSpeed: 5

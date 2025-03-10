@@ -8,8 +8,15 @@ public class Bat : MonoBehaviour
     private float height;
     private Vector3 startPosition;
 
+    GameManager gm;
+
     void Start()
     {
+        gm = GameManager.Instance;
+
+        if(gm.hardModeOn)
+            horizontalSpeed*=2;
+
         int randomInt = Random.Range(0, 2);
         switch(randomInt){
             case(0):

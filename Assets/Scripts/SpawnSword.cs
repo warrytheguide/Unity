@@ -4,6 +4,14 @@ public class SpawnSword : MonoBehaviour
 {
     [SerializeField] GameObject sword;
     private bool spawned = false;
+
+    private float horizontalSpeed = 8.5f;
+    GameManager gm;
+
+    void Start(){
+        if(gm.hardModeOn)
+            horizontalSpeed*=2;
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
 
@@ -33,7 +41,7 @@ public class SpawnSword : MonoBehaviour
         GameObject spawnedObstacle = Instantiate(obstacleToSpawn, spawnPosition, Quaternion.identity);
 
         Rigidbody2D obstacleRB = spawnedObstacle.GetComponent<Rigidbody2D>();
-        obstacleRB.linearVelocity = Vector2.left * 5.5f;
+        obstacleRB.linearVelocity = Vector2.left * horizontalSpeed;
 
     }
 }

@@ -2,10 +2,17 @@ using UnityEngine;
 
 public class SpawnFire : MonoBehaviour
 {
-
-    [SerializeField] GameObject fire;
-    private void OnCollisionEnter2D(Collision2D other)
     
+    [SerializeField] GameObject fire;
+    
+    private float horizontalSpeed = 7;
+    GameManager gm;
+
+    void Start(){
+        if(gm.hardModeOn)
+            horizontalSpeed*=2;
+    }
+    private void OnCollisionEnter2D(Collision2D other)
     {
         if(other.gameObject.tag=="Dragon"){
             Spawn();
@@ -23,7 +30,7 @@ public class SpawnFire : MonoBehaviour
         GameObject spawnedObstacle = Instantiate(obstacleToSpawn, spawnPosition, Quaternion.identity);
 
         Rigidbody2D obstacleRB = spawnedObstacle.GetComponent<Rigidbody2D>();
-        obstacleRB.linearVelocity = Vector2.left * 7;
+        obstacleRB.linearVelocity = Vector2.left * horizontalSpeed;
 
     }
 

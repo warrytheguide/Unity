@@ -20,6 +20,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI honeyedText;
     [SerializeField] private TextMeshProUGUI appledText;
     [SerializeField] private TextMeshProUGUI firedText;
+    [SerializeField] private TextMeshProUGUI swordedText;
+    [SerializeField] private TextMeshProUGUI crownedText;
+    [SerializeField] private GameObject forest;
+    [SerializeField] private GameObject castle;
+    [SerializeField] private GameObject hell;
 
     [SerializeField] private float buffDuration;
     [SerializeField] public float killScore;
@@ -29,6 +34,8 @@ public class GameManager : MonoBehaviour
     public bool isHoneyed = false;
     public bool isAppled = false;
     public bool isFired = false;
+    public bool isSworded = false;
+    public bool isCrowned = false;
 
     private float phaseTwoScore = 1000;
     private float phaseThreeScore = 2000;
@@ -48,7 +55,7 @@ public class GameManager : MonoBehaviour
 
     public UnityEvent onPlay = new UnityEvent();
     public UnityEvent onGameOver = new UnityEvent();
-    private bool HardmodeOn = false;
+    public bool hardModeOn = false;
 
     public GameObject spawnerOne;
     public GameObject spawnerTwo;
@@ -65,6 +72,9 @@ public class GameManager : MonoBehaviour
         honeyedText.gameObject.SetActive(false);
         appledText.gameObject.SetActive(false);
         firedText.gameObject.SetActive(false);
+        swordedText.gameObject.SetActive(false);
+        crownedText.gameObject.SetActive(false);
+        forest.gameObject.SetActive(true);
 
         spawnerOne.GetComponent<Spawner>().enabled = true;
     }
@@ -87,8 +97,8 @@ public class GameManager : MonoBehaviour
         {
             phaseFour = true;
 
-            if(!HardmodeOn){
-                HardmodeOn = true;
+            if(!hardModeOn){
+                hardModeOn = true;
                 Hardmode();
             }
             
@@ -99,6 +109,8 @@ public class GameManager : MonoBehaviour
                 phaseOne = true;
                 spawnerThreeHard.GetComponent<Spawner>().enabled = false;
                 spawnerOneHard.GetComponent<Spawner>().enabled = true;
+                hell.gameObject.SetActive(false);
+                forest.gameObject.SetActive(true);
             }
 
             else if (Mathf.FloorToInt(currentScore / 1000) % 3 == 1)
@@ -107,6 +119,8 @@ public class GameManager : MonoBehaviour
                 phaseTwo = true;
                 spawnerOneHard.GetComponent<Spawner>().enabled = false;
                 spawnerTwoHard.GetComponent<Spawner>().enabled = true;
+                forest.gameObject.SetActive(false);
+                castle.gameObject.SetActive(true);
             }
 
             else if (Mathf.FloorToInt(currentScore / 1000) % 3 == 2)
@@ -115,6 +129,8 @@ public class GameManager : MonoBehaviour
                 phaseThree = true;
                 spawnerTwoHard.GetComponent<Spawner>().enabled = false;
                 spawnerThreeHard.GetComponent<Spawner>().enabled = true;
+                castle.gameObject.SetActive(false);
+                hell.gameObject.SetActive(true);
             }
 
         }
@@ -126,6 +142,8 @@ public class GameManager : MonoBehaviour
 
             spawnerTwo.GetComponent<Spawner>().enabled = false;
             spawnerThree.GetComponent<Spawner>().enabled = true;
+            castle.gameObject.SetActive(false);
+            hell.gameObject.SetActive(true);
         }
 
         else if (currentScore > phaseTwoScore)
@@ -135,6 +153,8 @@ public class GameManager : MonoBehaviour
 
             spawnerOne.GetComponent<Spawner>().enabled = false;
             spawnerTwo.GetComponent<Spawner>().enabled = true;
+            forest.gameObject.SetActive(false);
+            castle.gameObject.SetActive(true);
         }
 
 
@@ -148,6 +168,9 @@ public class GameManager : MonoBehaviour
         honeyedText.gameObject.SetActive(false);
         appledText.gameObject.SetActive(false);
         firedText.gameObject.SetActive(false);
+        swordedText.gameObject.SetActive(false);
+        crownedText.gameObject.SetActive(false);
+        forest.gameObject.SetActive(true);
 
         onPlay.Invoke();
         isPlaying = true;
@@ -227,6 +250,34 @@ public class GameManager : MonoBehaviour
     {   
         isFired = false;
         firedText.gameObject.SetActive(false);
+    }
+
+      public void Sworded()
+    {
+        isSworded = true;
+        swordedText.gameObject.SetActive(true);
+    }
+
+    public void EndSworded()
+    {   
+        isSworded = false;
+        swordedText.gameObject.SetActive(false);
+    }
+
+      public void Crowned()
+    {
+        isCrowned = true;
+        if(isFired){
+            CancelInvoke("EndFired");
+            EndFired();
+        }
+        crownedText.gameObject.SetActive(true);
+    }
+
+    public void EndCrowned()
+    {   
+        isCrowned = false;
+        crownedText.gameObject.SetActive(false);
     }
 
     private void Hardmode(){

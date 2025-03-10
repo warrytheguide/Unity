@@ -26,13 +26,22 @@ public class PlayerCollision : MonoBehaviour
         switch (other.transform.tag)
         {
             case "Bush":
-                if (!gm.isAppled)
+
+                if (gm.isAppled)
                 {
-                    gm.playerHealth.TakeDamage(1);
                     Destroy(other.gameObject);
                 }
+
+                else if (gm.isSworded)
+                {
+                    Destroy(other.gameObject);
+                    gm.playerHealth.Heal(1);
+                    gm.EndSworded();
+                }
+
                 else
                 {
+                    gm.playerHealth.TakeDamage(1);
                     Destroy(other.gameObject);
                 }
 
@@ -40,16 +49,26 @@ public class PlayerCollision : MonoBehaviour
 
 
             case "Bear":
-                if (!gm.isHoneyed)
+
+                if (gm.isHoneyed)
+                {
+                    Destroy(other.gameObject);
+                    gm.currentScore += gm.killScore;
+                }
+
+                else if (gm.isSworded)
+                {
+                    Destroy(other.gameObject);
+                    gm.playerHealth.Heal(1);
+                    gm.EndSworded();
+                }
+
+                else
                 {
                     gm.playerHealth.TakeDamage(1);
                     Destroy(other.gameObject);
                 }
-                else
-                {
-                    Destroy(other.gameObject);
-                    GameManager.Instance.currentScore += gm.killScore;
-                }
+
                 break;
 
 
@@ -64,29 +83,109 @@ public class PlayerCollision : MonoBehaviour
                 break;
 
             case "Bat":
-                Destroy(other.gameObject);
-                gm.playerHealth.TakeDamage(1);
+                if (gm.isSworded)
+                {
+                    Destroy(other.gameObject);
+                    gm.playerHealth.Heal(1);
+                    gm.EndSworded();
+                }
+
+                else
+                {
+                    gm.playerHealth.TakeDamage(1);
+                    Destroy(other.gameObject);
+                }
+
                 break;
 
             case "Fire":
-                Destroy(other.gameObject);
-                gm.playerHealth.TakeDamage(1);
-                gm.Fired();
+                if (gm.isSworded)
+                {
+                    Destroy(other.gameObject);
+                    gm.playerHealth.Heal(1);
+                    gm.EndSworded();
+                }
+
+                else
+                {
+                    gm.playerHealth.TakeDamage(1);
+                    Destroy(other.gameObject);
+                    gm.Fired();
+                }
+
                 break;
 
             case "Dragon":
-                Destroy(other.gameObject);
-                gm.playerHealth.TakeDamage(1);
+                if (gm.isSworded)
+                {
+                    Destroy(other.gameObject);
+                    gm.playerHealth.Heal(1);
+                    gm.EndSworded();
+                }
+
+                else
+                {
+                    gm.playerHealth.TakeDamage(1);
+                    Destroy(other.gameObject);
+                }
+
                 break;
 
             case "Knight":
-                Destroy(other.gameObject);
-                gm.playerHealth.TakeDamage(2);
+                if (gm.isCrowned)
+                {
+                    Destroy(other.gameObject);
+                    gm.currentScore += gm.killScore;
+                }
+
+                else if (gm.isSworded)
+                {
+                    Destroy(other.gameObject);
+                    gm.playerHealth.Heal(1);
+                    gm.EndSworded();
+                }
+
+                else
+                {
+                    gm.playerHealth.TakeDamage(2);
+                    Destroy(other.gameObject);
+                }
+
                 break;
+
             case "Sword":
-                Destroy(other.gameObject);
+
+                if (gm.isCrowned)
+                {
+                    Destroy(other.gameObject);
+                    gm.currentScore += gm.killScore;
+                }
+                else if (gm.isSworded)
+                {
+                    Destroy(other.gameObject);
+                    gm.playerHealth.Heal(1);
+                    gm.EndSworded();
+                }
+
+                else
+                {
+                    gm.playerHealth.TakeDamage(1);
+                    Destroy(other.gameObject);
+                }
+
                 gm.playerHealth.TakeDamage(1);
+
                 break;
+            case "SwordBuff":
+                gm.Sworded();
+                Destroy(other.gameObject);
+                break;
+
+            case "Crown":
+                gm.Crowned();
+                Destroy(other.gameObject);
+                break;
+
             default:
                 break;
         }
