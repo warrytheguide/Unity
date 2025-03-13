@@ -9,6 +9,7 @@ public class SpawnFire : MonoBehaviour
     GameManager gm;
 
     void Start(){
+        gm = GameManager.Instance;
         if(gm.hardModeOn)
             horizontalSpeed*=2;
     }

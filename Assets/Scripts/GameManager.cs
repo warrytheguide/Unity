@@ -272,6 +272,8 @@ public class GameManager : MonoBehaviour
             EndFired();
         }
         crownedText.gameObject.SetActive(true);
+        CancelInvoke("EndCrowned");
+        Invoke("EndCrowned", buffDuration);
     }
 
     public void EndCrowned()
