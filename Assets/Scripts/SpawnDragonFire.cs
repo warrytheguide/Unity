@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SpawnFire : MonoBehaviour
+public class SpawnDragonFire : MonoBehaviour
 {
     
     [SerializeField] GameObject fire;

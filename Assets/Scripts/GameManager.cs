@@ -195,6 +195,8 @@ public class GameManager : MonoBehaviour
         EndAppled();
         EndFired();
         EndHoneyed();
+        EndCrowned();
+        EndSworded();
 
         onGameOver.Invoke();
         currentScore = 0;

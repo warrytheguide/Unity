@@ -17,6 +17,8 @@ TagManager:
   - Sword
   - SwordBuff
   - Crown
+  - Devil
+  - DevilChild
   layers:
   - Default
   - TransparentFX

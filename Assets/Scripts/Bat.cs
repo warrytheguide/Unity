@@ -6,7 +6,7 @@ public class Bat : MonoBehaviour
     [SerializeField] public float frequency;
     [SerializeField] public float horizontalSpeed;
     private float height;
-    private Vector3 startPosition;
+    private Vector3 position;
 
     GameManager gm;
 
@@ -28,21 +28,17 @@ public class Bat : MonoBehaviour
 
         }
         
-        startPosition = new Vector3(transform.position.x, height, transform.position.z);
+        position = new Vector3(transform.position.x, height, transform.position.z);
     }
 
     void Update()
     {
-        // Calculate the horizontal movement
         float horizontalMovement = horizontalSpeed * Time.deltaTime;
         
-        // Calculate the vertical oscillation
         float yOffset = amplitude * Mathf.Sin(Time.time * frequency * 2f * Mathf.PI);
         
-        // Combine horizontal movement and vertical oscillation
-        transform.position = startPosition + new Vector3(-horizontalMovement, yOffset, 0f);
+        transform.position = position + new Vector3(-horizontalMovement, yOffset, 0f);
         
-        // Update the start position for continuous leftward movement
-        startPosition += new Vector3(-horizontalMovement, 0f, 0f);
+        position += new Vector3(-horizontalMovement, 0f, 0f);
     }
 }

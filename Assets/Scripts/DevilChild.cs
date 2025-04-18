@@ -1,5 +1,5 @@
 using UnityEngine;
-public class Dragon : MonoBehaviour
+public class DevilChild : MonoBehaviour
 {
 
     [SerializeField] public float amplitude;
