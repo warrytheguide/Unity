@@ -173,9 +173,8 @@ public class PlayerCollision : MonoBehaviour
                     Destroy(other.gameObject);
                 }
 
-                gm.playerHealth.TakeDamage(1);
-
                 break;
+
             case "SwordBuff":
                 gm.Sworded();
                 Destroy(other.gameObject);
@@ -183,6 +182,50 @@ public class PlayerCollision : MonoBehaviour
 
             case "Crown":
                 gm.Crowned();
+                Destroy(other.gameObject);
+                break;
+
+            case "Devil":
+               
+                if (gm.isSworded)
+                {
+                    Destroy(other.gameObject);
+                    gm.playerHealth.Heal(1);
+                    gm.EndSworded();
+                }
+
+                else
+                {
+                    gm.playerHealth.TakeDamage(2);
+                    Destroy(other.gameObject);
+                }
+
+                break;
+
+            case "DevilChild":
+               
+                if (gm.isSworded)
+                {
+                    Destroy(other.gameObject);
+                    gm.playerHealth.Heal(1);
+                    gm.EndSworded();
+                }
+
+                else
+                {
+                    gm.playerHealth.TakeDamage(1);
+                    Destroy(other.gameObject);
+                }
+
+                break;
+
+            case "Wings":
+                gm.Fly();
+                Destroy(other.gameObject);
+                break;
+            
+            case "Shield":
+                gm.Shield();
                 Destroy(other.gameObject);
                 break;
 

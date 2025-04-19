@@ -33,10 +33,21 @@ public class PlayerHealth : MonoBehaviour
     {
         if (gm.isFired)
         {
-            Health -= (damageAmount + 1);
+            if(Health - (damageAmount + 1) <= 0 && gm.isShield){
+                damageAmount-=1;
+                gm.EndShield();
+            }
+
+            Health -= damageAmount + 1;
         }
         else
         {
+            if(Health - damageAmount <= 0 && gm.isShield){
+                damageAmount-=1;
+                gm.EndShield();
+            }
+                
+
             Health -= damageAmount;
         }
 

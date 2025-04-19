@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class SpawnDevilFire : MonoBehaviour
 {
-    
     [SerializeField] GameObject fire;
     
     private float horizontalSpeed = 7;
@@ -13,26 +12,46 @@ public class SpawnDevilFire : MonoBehaviour
         if(gm.hardModeOn)
             horizontalSpeed*=2;
     }
+    
     private void OnCollisionEnter2D(Collision2D other)
     {
         if(other.gameObject.tag=="DevilChild"){
-            Spawn();
+            Spawn(other.gameObject);
         }
     }
 
+    private void Spawn(GameObject otherObject){
+        // Get the x position from the DevilChild
+        float devilChildX = otherObject.transform.position.x + 7;
+        
+        // Determine random height
+        float height;
+        int randomInt = Random.Range(0, 3);
 
-    private void Spawn(){
+        switch (randomInt)
+        {
+            case 0:
+                height = -6.55f;
+                break;
+            case 1:
+                height = -3.65f;
+                break;
+            case 2:
+                height = -0.55f;
+                break;
+            default:
+                height = -3.65f;
+                break;
+        }
         
-        Vector3 spawnPosition = transform.position;
-        spawnPosition.z = 0;
+        // Create spawn position using the x coordinate from the other object and random height
+        Vector3 spawnPosition = new Vector3(devilChildX, height, 0);
         
-        GameObject obstacleToSpawn = fire;
-        
-        GameObject spawnedObstacle = Instantiate(obstacleToSpawn, spawnPosition, Quaternion.identity);
+        // Instantiate the fire at the correct position
+        GameObject spawnedObstacle = Instantiate(fire, spawnPosition, Quaternion.identity);
 
+        // Apply velocity
         Rigidbody2D obstacleRB = spawnedObstacle.GetComponent<Rigidbody2D>();
         obstacleRB.linearVelocity = Vector2.left * horizontalSpeed;
-
     }
-
 }

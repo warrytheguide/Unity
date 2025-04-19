@@ -2,6 +2,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
+using Microsoft.Unity.VisualStudio.Editor;
 
 public class GameManager : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI firedText;
     [SerializeField] private TextMeshProUGUI swordedText;
     [SerializeField] private TextMeshProUGUI crownedText;
+    [SerializeField] private TextMeshProUGUI flyText;
+    [SerializeField] private GameObject shield;
     [SerializeField] private GameObject forest;
     [SerializeField] private GameObject castle;
     [SerializeField] private GameObject hell;
@@ -36,6 +39,8 @@ public class GameManager : MonoBehaviour
     public bool isFired = false;
     public bool isSworded = false;
     public bool isCrowned = false;
+    public bool isFly = false;
+    public bool isShield = false;
 
     private float phaseTwoScore = 1000;
     private float phaseThreeScore = 2000;
@@ -74,6 +79,8 @@ public class GameManager : MonoBehaviour
         firedText.gameObject.SetActive(false);
         swordedText.gameObject.SetActive(false);
         crownedText.gameObject.SetActive(false);
+        flyText.gameObject.SetActive(false);
+        shield.gameObject.SetActive(false);
         forest.gameObject.SetActive(true);
 
         spawnerOne.GetComponent<Spawner>().enabled = true;
@@ -89,6 +96,10 @@ public class GameManager : MonoBehaviour
             EndFired();
             EndAppled();
             EndHoneyed();
+            EndCrowned();
+            EndSworded();
+            EndFly();
+            EndShield();
         }
 
 
@@ -197,6 +208,8 @@ public class GameManager : MonoBehaviour
         EndHoneyed();
         EndCrowned();
         EndSworded();
+        EndFly();
+        EndShield();
 
         onGameOver.Invoke();
         currentScore = 0;
@@ -283,6 +296,33 @@ public class GameManager : MonoBehaviour
         isCrowned = false;
         crownedText.gameObject.SetActive(false);
     }
+    public void Fly()
+    {
+        isFly = true;
+        flyText.gameObject.SetActive(true);
+        CancelInvoke("EndFly");
+        Invoke("EndFly", buffDuration);
+    }
+
+    public void EndFly()
+    {
+        isFly = false;
+        flyText.gameObject.SetActive(false);
+    }
+
+    public void Shield()
+    {
+        isShield = true;
+        shield.gameObject.SetActive(true);
+    }
+
+    public void EndShield()
+    {
+        isShield = false;
+        shield.gameObject.SetActive(false);
+    }
+
+
 
     private void Hardmode(){
         buffDuration = buffDuration/2;
