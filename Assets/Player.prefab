@@ -108,7 +108,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7145198348311737387, guid: 6babcf9610886124092f6d30a86de249, type: 3}
+  m_Sprite: {fileID: 7145198348311737387, guid: 4322143197ce26e4781cc25f0c782443, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -179,7 +179,6 @@ GameObject:
   - component: {fileID: 4177387923882687178}
   - component: {fileID: 4949207872539400948}
   - component: {fileID: 8921098677293490338}
-  - component: {fileID: 2173223299697016472}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -245,12 +244,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 7698177232192758179}
   jumpForce: 11
+  flySpeed: 5
+  maxFlyHeight: 3
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  platformLayer:
+    serializedVersion: 2
+    m_Bits: 0
   feetPos: {fileID: 1513094624954697138}
   groundDistance: 0.25
   jumpTime: 0.3
+  fallThrough: 0
+  platformEffector2D_1: {fileID: 0}
+  platformEffector2D_2: {fileID: 0}
 --- !u!114 &4177387923882687178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,12 +270,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53208fd34efbbc846bd30107bd3b291e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isHoneyed: 0
-  isAppled: 0
-  buffDuration: 30
-  killScore: 100
-  honeyedText: {fileID: 0}
-  appledText: {fileID: 0}
 --- !u!114 &4949207872539400948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,16 +330,3 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.7098584, y: 1.4678602}
   m_EdgeRadius: 0
---- !u!114 &2173223299697016472
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6318101571845756801}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 902c4c86c771594478f93b9819498e32, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerCollider: {fileID: 8921098677293490338}

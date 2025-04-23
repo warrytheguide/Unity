@@ -214,6 +214,7 @@ public class GameManager : MonoBehaviour
         onGameOver.Invoke();
         currentScore = 0;
         isPlaying = false;
+        hardModeOn = false;
 
         doubleJump = false;
     }
