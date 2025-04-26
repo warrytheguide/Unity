@@ -32,12 +32,6 @@ public class PlayerCollision : MonoBehaviour
                     Destroy(other.gameObject);
                 }
 
-                else if (gm.isSworded)
-                {
-                    Destroy(other.gameObject);
-                    gm.playerHealth.Heal(1);
-                    gm.EndSworded();
-                }
 
                 else
                 {
@@ -99,14 +93,7 @@ public class PlayerCollision : MonoBehaviour
                 break;
 
             case "Fire":
-                if (gm.isSworded)
-                {
-                    Destroy(other.gameObject);
-                    gm.playerHealth.Heal(1);
-                    gm.EndSworded();
-                }
 
-                else
                 {
                     gm.playerHealth.TakeDamage(1);
                     Destroy(other.gameObject);

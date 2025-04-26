@@ -110,6 +110,7 @@ public class GameManager : MonoBehaviour
 
             if(!hardModeOn){
                 hardModeOn = true;
+                spawnerThree.GetComponent<Spawner>().enabled = false;
                 Hardmode();
             }
             
