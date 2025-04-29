@@ -1232,7 +1232,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &440093833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1247,7 +1247,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstaclePrefabs:
   - {fileID: 2118888076059460961, guid: 7a073bf1075476e4faf06c37ba2afa1e, type: 3}
-  - {fileID: 1848703151395258279, guid: b0e7f51afb2dde1468be4ce8e7a4a47c, type: 3}
+  - {fileID: 6061553418901993863, guid: aa886a58df24bd747bb69dbb47a9b45c, type: 3}
+  - {fileID: 5901502322197897731, guid: d42f364fb7940bc499aabb740aa0ae22, type: 3}
   obstacleParent: {fileID: 1700329725}
   obstacleSpawnTime: 3
 --- !u!4 &440093834
@@ -4808,7 +4809,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2111251849
 MonoBehaviour:
   m_ObjectHideFlags: 0

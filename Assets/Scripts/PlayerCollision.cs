@@ -95,7 +95,6 @@ public class PlayerCollision : MonoBehaviour
             case "Fire":
 
                 {
-                    gm.playerHealth.TakeDamage(1);
                     Destroy(other.gameObject);
                     gm.Fired();
                 }
