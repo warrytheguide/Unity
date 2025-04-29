@@ -15,7 +15,7 @@ public class Bat : MonoBehaviour
         gm = GameManager.Instance;
 
         if(gm.hardModeOn)
-            horizontalSpeed*=2;
+            horizontalSpeed*= (float)1.5;
 
         int randomInt = Random.Range(0, 2);
         switch(randomInt){

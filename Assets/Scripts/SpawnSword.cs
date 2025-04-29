@@ -5,13 +5,13 @@ public class SpawnSword : MonoBehaviour
     [SerializeField] GameObject sword;
     private bool spawned = false;
 
-    private float horizontalSpeed = 8.5f;
+    private float horizontalSpeed = 13.5f;
     GameManager gm;
 
     void Start(){
         gm = GameManager.Instance;
         if(gm.hardModeOn)
-            horizontalSpeed*=2;
+            horizontalSpeed*= (float)1.5;
     }
     private void OnTriggerEnter2D(Collider2D other)
     {

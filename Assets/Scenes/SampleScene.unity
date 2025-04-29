@@ -158,9 +158,9 @@ MonoBehaviour:
   forest: {fileID: 823361603}
   castle: {fileID: 1295878208}
   hell: {fileID: 968072889}
-  buffDuration: 15
+  buffDuration: 6
   killScore: 100
-  obstacleSpeed: 7
+  obstacleSpeed: 11
   scoreMultiplier: 30
   isHoneyed: 0
   isAppled: 0
@@ -1232,7 +1232,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &440093833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1246,7 +1246,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstaclePrefabs:
-  - {fileID: 8111481846673591035, guid: 785523f599044b6468ff897b6e5cb2c4, type: 3}
+  - {fileID: 2118888076059460961, guid: 7a073bf1075476e4faf06c37ba2afa1e, type: 3}
+  - {fileID: 1848703151395258279, guid: b0e7f51afb2dde1468be4ce8e7a4a47c, type: 3}
   obstacleParent: {fileID: 1700329725}
   obstacleSpawnTime: 3
 --- !u!4 &440093834
@@ -4807,7 +4808,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2111251849
 MonoBehaviour:
   m_ObjectHideFlags: 0

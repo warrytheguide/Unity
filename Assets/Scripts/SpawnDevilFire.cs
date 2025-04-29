@@ -4,13 +4,13 @@ public class SpawnDevilFire : MonoBehaviour
 {
     [SerializeField] GameObject fire;
     
-    private float horizontalSpeed = 7;
+    private float horizontalSpeed = 11;
     GameManager gm;
 
     void Start(){
         gm = GameManager.Instance;
         if(gm.hardModeOn)
-            horizontalSpeed*=2;
+            horizontalSpeed*= (float)1.5;
     }
     
     private void OnCollisionEnter2D(Collision2D other)
@@ -21,10 +21,9 @@ public class SpawnDevilFire : MonoBehaviour
     }
 
     private void Spawn(GameObject otherObject){
-        // Get the x position from the DevilChild
+
         float devilChildX = otherObject.transform.position.x + 7;
         
-        // Determine random height
         float height;
         int randomInt = Random.Range(0, 3);
 

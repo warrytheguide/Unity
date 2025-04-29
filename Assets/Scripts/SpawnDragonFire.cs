@@ -5,13 +5,13 @@ public class SpawnDragonFire : MonoBehaviour
     
     [SerializeField] GameObject fire;
     
-    private float horizontalSpeed = 7;
+    private float horizontalSpeed = 11;
     GameManager gm;
 
     void Start(){
         gm = GameManager.Instance;
         if(gm.hardModeOn)
-            horizontalSpeed*=2;
+            horizontalSpeed*= (float)1.5;
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
