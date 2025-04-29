@@ -133,7 +133,7 @@ public class PlayerCollision : MonoBehaviour
 
                 else
                 {
-                    gm.playerHealth.TakeDamage(2);
+                    gm.playerHealth.TakeDamage(1);
                     Destroy(other.gameObject);
                 }
 
