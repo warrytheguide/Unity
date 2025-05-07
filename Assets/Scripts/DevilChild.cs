@@ -8,8 +8,16 @@ public class DevilChild : MonoBehaviour
     private float height;
     private Vector3 startPosition;
 
+    GameManager gm;
+
     void Start()
     {
+        gm = GameManager.Instance;
+
+        if(gm.hardModeOn){
+            horizontalSpeed*= (float)1.5;
+        }
+
         int randomInt = Random.Range(0, 3);
         switch (randomInt)
         {
