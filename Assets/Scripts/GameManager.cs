@@ -327,7 +327,7 @@ public class GameManager : MonoBehaviour
 
 
     private void Hardmode(){
-        buffDuration = buffDuration/2;
+        buffDuration = (float)(buffDuration * 0.7);
         obstacleSpeed = (float)(obstacleSpeed * 1.5);
     }
 }
