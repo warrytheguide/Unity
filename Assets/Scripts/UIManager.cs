@@ -48,6 +48,10 @@ public void PlayButtonHandler(){
     gm.StartGame();
 }
 
+public void ExitButtonHandler(){
+    Application.Quit();
+}
+
 public void ActivateGameOverUI(){
     gameOverUI.SetActive(true);
 }
